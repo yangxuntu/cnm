@@ -9,7 +9,7 @@ python train_rs3_lr_new.py --id r78 --caption_model mcap_rs3  --mtopdown_num 2 -
 
 python eval_rs3.py --dump_images 0 --num_images 5000 --model r78/modelr78${model}.pth --infos_path r78/infos_r78${model}.pkl --language_eval 1 --beam_size 5 --split test --index_eval 1 --gpu 1 --batch_size 100
 
-CVLNM/ pytorch 0.4.0
+# CVLNM/ pytorch 0.4.0
 I provide the anaconda environment for running my code in https://drive.google.com/drive/folders/1GvwpchUnfqUjvlpWTYbmEvhvkJTIWWRb?usp=sharing. You should download the file ''environment_yx1.yml'' from this link and set up the environment as follows.
 1.Download the anaconda from the website https://www.anaconda.com/ and install it.
 2.Go to website https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?highlight=environment to learn how to 'creating an environment from an environment.yml file'.
