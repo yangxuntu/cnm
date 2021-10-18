@@ -40,3 +40,13 @@ This will create data/cocobu_fc, data/cocobu_att and data/cocobu_box.
 # Training the model
 1.After downloading the codes and meta data, you can train the model by using the following code:
 ```
+python train.py --id c1  --checkpoint_path c1 --caption_model mcap_rs3_mem_new  --mtopdown_num 1 --mtopdown_res 1 --topdown_res 1 --input_json data/cocobu.json --input_fc_dir data/cocobu_fc --input_att_dir data/cocobu_att --input_attr_dir data/cocobu_att --input_rela_dir data/cocobu_att --input_label_h5 data/cocobu_label.h5 --batch_size 50 --accumulate_number 2 --learning_rate_decay_start 0 --learning_rate 5e-4 --learning_rate_decay_every 5 --scheduled_sampling_start 37 --save_checkpoint_every 5000 --val_images_use 50 --max_epochs 100 --rnn_size 1000 --input_encoding_size 1000 --att_feat_size 2048 --att_hid_size 512 --self_critical_after 37 --train_split train --gpu 0 --combine_att concat --step2_train_after 40 --cont_ver 1 --relu_mod leaky_relu --memory_cell_path kg/kg.npz
+```
+Note that due to the limited GPU memory, we accumulate a few batch to approximate a bigger batch size, e.g., if --accumulate_number is 2 and --batch_size is 50, then the used batch size is 50 \* 2=100. However, the performance of such approximation is weaker than bigger batch size, e.g., --accumulate_number is 1 and --batch_size is 100.
+
+# Evaluating the model
+1.After training the model or downloading the well-trained model, you can evaluate them by using the following code:
+```
+python eval_rs.py --dump_images 0 --num_images 5000 --model c1/modelc10001.pth --infos_path c1/infos_c10001.pkl --language_eval 1 --beam_size 5 --split test --index_eval 1 --gpu 1 --batch_size 100 --memory_cell_path c1/memory_cellrc10001.npz
+```
+what you need to do is to switch the model id with your id, like c10001 to c10023.
