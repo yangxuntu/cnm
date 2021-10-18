@@ -1,4 +1,4 @@
-<!-- # cnm
+# cnm
 1.Prepare the training dataset as in https://github.com/ruotianluo/self-critical.pytorch
 
 2.The training code is:
